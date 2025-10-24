@@ -1,0 +1,43 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '2.0.0'
+    id 'application'
+    id 'com.gradleup.shadow' version '9.2.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    dependencies {
+    implementation "io.modelcontextprotocol:kotlin-sdk:0.3.0"
+    implementation "com.anthropic:anthropic-java:0.8.0"
+    implementation "io.ktor:ktor-client-core:2.3.9"
+    implementation "io.ktor:ktor-client-cio:2.3.9"
+    implementation "io.ktor:ktor-client-json:2.3.9"
+    implementation "io.ktor:ktor-client-content-negotiation:2.3.9"
+    implementation "io.ktor:ktor-client-logging:2.3.9"
+    implementation "io.ktor:ktor-serialization-kotlinx-json:2.3.9"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.15.2"
+    implementation "org.slf4j:slf4j-api:2.0.9"
+    implementation "ch.qos.logback:logback-classic:1.4.11"
+}
+    
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+application {
+    mainClass = 'org.dkedu.AppClientKt'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
